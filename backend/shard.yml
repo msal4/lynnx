@@ -1,0 +1,13 @@
+name: backend
+version: 0.1.0
+
+authors:
+  - Luke Whrit <lukewhrit@gmail.com>
+
+targets:
+  backend:
+    main: src/backend.cr
+
+crystal: 0.34.0
+
+license: MIT
