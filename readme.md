@@ -1,6 +1,6 @@
 # Lynnx
 
-> 🐆 **Lynnx is a powerful, accessible and lightweight URL shortener built with SvelteJS and Rust.**
+> 🐆 **Lynnx is a powerful, accessible and lightweight URL shortener built with SvelteJS and Crystal.**
 >\
 >\
 > [**Contributing Guide**](contributing.md) **|** [**Website**](lynnx.me)
@@ -11,12 +11,14 @@
 
 ## Setup
 
-Setting up Lynnx for local development is easy, it requires Git, Node.js and Yarn.
+### Frontend
+
+Setting up the Lynnx frontend for local development is easy, it requires Git, Node.js and Yarn.
 
 ```sh
 # Clone repository
 $ git clone git@github.com:lukewhrit/lynnx
-$ cd lynnx
+$ cd lynnx/frontend
 
 # Install packages
 $ yarn
@@ -25,10 +27,13 @@ $ yarn
 $ yarn dev
 ```
 
+### Backend
+
+...
+
 ## Contributors
 
-* [Luke Whrit <me@lukewhrit.xyz>](https://github.com/lukewhrit) — Frontend developer and project lead.
-* [Jack Dorland <puggo@puggo.space>](https://github.com/heyitspuggo) — Backend developer.
+* [Luke Whrit <me@lukewhrit.xyz>](https://github.com/lukewhrit) — Creator and Maintainer.
 
 ## License
 
