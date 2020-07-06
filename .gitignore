@@ -1,5 +1,9 @@
+### Environments ###
 .DS_Store
-__sapper__/
+.vscode
+.idea
+
+### Frontend ###
 
 # Logs
 logs
@@ -31,9 +35,6 @@ coverage
 # Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
-# Bower dependency directory (https://bower.io/)
-bower_components
-
 # node-waf configuration
 .lock-wscript
 
@@ -43,24 +44,16 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+bower_components
 
 # TypeScript v1 declaration files
 typings/
 
-# TypeScript cache
+# Caches
 *.tsbuildinfo
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
 .eslintcache
-
-# Microbundle cache
-.rpt2_cache/
-.rts2_cache_cjs/
-.rts2_cache_es/
-.rts2_cache_umd/
+.npm
+.cache
 
 # Optional REPL history
 .node_repl_history
@@ -75,38 +68,11 @@ typings/
 .env
 .env.test
 
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-
-# Next.js build output
+# Build outputs
+__sapper__
 .next
-
-# Nuxt.js build / generate output
 .nuxt
 dist
 
-# Gatsby files
-.cache/
-# Comment in the public line in if your project uses Gatsby and not Next.js
-# https://nextjs.org/blog/next-9-1#public-directory-support
-# public
-
-# vuepress build output
-.vuepress/dist
-
-# Serverless directories
-.serverless/
-
-# FuseBox cache
-.fusebox/
-
-# DynamoDB Local files
-.dynamodb/
-
-# TernJS port file
-.tern-port
-
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
-
-# End of https://www.toptal.com/developers/gitignore/api/node

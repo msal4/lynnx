@@ -27,10 +27,6 @@ $ yarn
 $ yarn dev
 ```
 
-### Backend
-
-...
-
 ## Contributors
 
 * [Luke Whrit <me@lukewhrit.xyz>](https://github.com/lukewhrit) — Creator and Maintainer.
