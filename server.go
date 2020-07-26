@@ -9,6 +9,7 @@ import (
 	"github.com/gofiber/fiber/middleware"
 	"github.com/lukewhrit/lynnx/config"
 	"github.com/lukewhrit/lynnx/middlewares"
+	"github.com/lukewhrit/lynnx/routes"
 )
 
 func main() {
@@ -22,17 +23,10 @@ func main() {
 
 	// Register middleware and endpoints
 	registerMiddleware(app)
-	registerEndpoints(app)
-
-	// Serve static files
-	app.Static("/", "./static", fiber.Static{
-		Compress: true,
-	})
+	routes.Register(app)
 
 	// Start the server
 	address := fmt.Sprintf("%s:%x", config.GetServer().Host, config.GetServer().Port)
-
-	fmt.Println(address)
 
 	log.Fatal(app.Listen(address))
 }
@@ -45,12 +39,4 @@ func registerMiddleware(app *fiber.App) {
 	app.Use(cors.New())
 	app.Use(middlewares.SecurityHeaders())
 	app.Use(middleware.Logger())
-}
-
-func registerEndpoints(app *fiber.App) {
-	api := app.Group("/api/v1")
-
-	api.Get("/", func(c *fiber.Ctx) {
-		c.Send("Hello, World 👋!")
-	})
 }
