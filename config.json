@@ -1,0 +1,10 @@
+{
+	"Server": {
+		"Port": 9000,
+		"Host": "127.0.0.1",
+		"CompressionLevel": -1,
+		"EnableCSP": true
+	},
+	"LinkLength": 8,
+	"AllowCustomURLs": false
+}
