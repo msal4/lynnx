@@ -14,12 +14,7 @@ type Server struct {
 
 // Config is the configuration object
 type Config struct {
-	Server struct {
-		Port             int
-		Host             string
-		CompressionLevel int
-		EnableCSP        bool
-	}
+	Server
 
 	LinkLength      int
 	AllowCustomURLs bool
