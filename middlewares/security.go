@@ -18,7 +18,7 @@ func SecurityHeaders() func(*fiber.Ctx) {
 		c.Set("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload")
 		c.Set("Cache-Control", "max-age=31536000")
 
-		if config.GetServer().EnableCSP == true {
+		if config.GetConfig().Server.EnableCSP == true {
 			c.Set("Content-Security-Policy", "default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none';")
 		}
 

@@ -26,14 +26,14 @@ func main() {
 	routes.Register(app)
 
 	// Start the server
-	address := fmt.Sprintf("%s:%x", config.GetServer().Host, config.GetServer().Port)
+	address := fmt.Sprintf("%s:%x", config.GetConfig().Server.Host, config.GetConfig().Server.Port)
 
 	log.Fatal(app.Listen(address))
 }
 
 func registerMiddleware(app *fiber.App) {
 	app.Use(middleware.Compress(middleware.CompressConfig{
-		Level: config.GetServer().CompressionLevel,
+		Level: config.GetConfig().CompressionLevel,
 	}))
 
 	app.Use(cors.New())

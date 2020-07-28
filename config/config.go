@@ -53,22 +53,7 @@ func Load() error {
 	return nil
 }
 
-// GetLinkLength returns a number that represents the allowed length of links
-func GetLinkLength() int {
-	return configuration.LinkLength
-}
-
-// GetAllowCustomURLs returns a boolean that decides whether to allow for custom URLs
-func GetAllowCustomURLs() bool {
-	return configuration.AllowCustomURLs
-}
-
-// GetServer returns fiber-related configuration options
-func GetServer() Server {
-	return configuration.Server
-}
-
-// GetRedisURI returns a URI for connecting to a redis instance
-func GetRedisURI() string {
-	return configuration.RedisURI
+// GetConfig returns the entire configuration object
+func GetConfig() Config {
+	return *configuration
 }
