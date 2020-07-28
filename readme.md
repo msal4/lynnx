@@ -1,9 +1,9 @@
 # Lynnx
 
-> 🐆 **Lynnx is a powerful, accessible and lightweight URL shortener built with SvelteJS and Crystal.**
+> 🐆 **Lynnx is a powerful, accessible and lightweight URL shortener built with SvelteJS and Golang.**
 >\
 >\
-> [**Contributing Guide**](contributing.md) **|** [**Website**](lynnx.me)
+> **[Contributing Guide](contributing.md) | [Website](lynnx.me) | [Frontend Repo](https://github.com/lukewhrit/lynnx-frontend)**
 
 * Designed for accessability
 * Lightweight and Fast
@@ -11,20 +11,17 @@
 
 ## Setup
 
-### Frontend
+Setting up the Lynnx backend for local development is easy, it just requires [Git](http://git-scm.org/), [Golang](http://golang.org/) and [Mage](https://magefile.org/).
 
-Setting up the Lynnx frontend for local development is easy, it requires Git, Node.js and Yarn.
+This project makes use of Golang Modules for dependency management, make sure they're enabled.
 
 ```sh
-# Clone repository
+# Clone repository:
 $ git clone git@github.com:lukewhrit/lynnx
-$ cd lynnx/frontend
+$ cd lynnx
 
-# Install packages
-$ yarn
-
-# Run development server
-$ yarn dev
+# Install packages and build to a binary:
+$ mage build
 ```
 
 ## Contributors
