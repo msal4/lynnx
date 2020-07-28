@@ -29,7 +29,7 @@ func main() {
 	database.Load()
 
 	// Start the server
-	address := fmt.Sprintf("%s:%x", config.GetConfig().Server.Host, config.GetConfig().Server.Port)
+	address := fmt.Sprintf("%s:%d", config.GetConfig().Server.Host, config.GetConfig().Server.Port)
 
 	log.Fatal(app.Listen(address))
 }
