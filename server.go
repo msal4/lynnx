@@ -8,6 +8,7 @@ import (
 	"github.com/gofiber/fiber"
 	"github.com/gofiber/fiber/middleware"
 	"github.com/lukewhrit/lynnx/config"
+	"github.com/lukewhrit/lynnx/database"
 	"github.com/lukewhrit/lynnx/middlewares"
 	"github.com/lukewhrit/lynnx/routes"
 )
@@ -24,6 +25,8 @@ func main() {
 	// Register middleware and endpoints
 	registerMiddleware(app)
 	routes.Register(app)
+
+	database.Load()
 
 	// Start the server
 	address := fmt.Sprintf("%s:%x", config.GetConfig().Server.Host, config.GetConfig().Server.Port)
