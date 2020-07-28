@@ -18,6 +18,7 @@ type Config struct {
 
 	LinkLength      int
 	AllowCustomURLs bool
+	RedisURI        string
 }
 
 var configuration *Config
@@ -65,4 +66,9 @@ func GetAllowCustomURLs() bool {
 // GetServer returns fiber-related configuration options
 func GetServer() Server {
 	return configuration.Server
+}
+
+// GetRedisURI returns a URI for connecting to a redis instance
+func GetRedisURI() string {
+	return configuration.RedisURI
 }

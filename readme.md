@@ -1,6 +1,6 @@
 # Lynnx
 
-> 🐆 **Lynnx is a powerful, accessible and lightweight URL shortener built with SvelteJS and Golang.**
+> 🐆 **Lynnx is a powerful, accessible and lightweight URL shortener built with SvelteJS and Golang and backed by a Redis database.**
 >\
 >\
 > **[Contributing Guide](contributing.md) | [Website](lynnx.me) | [Frontend Repo](https://github.com/lukewhrit/lynnx-frontend)**

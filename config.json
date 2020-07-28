@@ -6,5 +6,6 @@
 		"EnableCSP": true
 	},
 	"LinkLength": 8,
-	"AllowCustomURLs": false
+	"AllowCustomURLs": false,
+	"RedisURI": "redis://localhost:6379/0"
 }
