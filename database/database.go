@@ -2,7 +2,6 @@ package database
 
 import (
 	"context"
-	"fmt"
 	"log"
 
 	"github.com/go-redis/redis/v8"
@@ -10,7 +9,8 @@ import (
 )
 
 var (
-	ctx = context.Background()
+	// Ctx is a thing, I guess. I honestly don't know
+	Ctx = context.Background()
 
 	// RedisClient holds the active connection to the database
 	RedisClient *redis.Client
@@ -25,7 +25,4 @@ func Load() {
 	}
 
 	RedisClient = redis.NewClient(opts)
-
-	pong, err := RedisClient.Ping(ctx).Result()
-	fmt.Println(pong, err)
 }
