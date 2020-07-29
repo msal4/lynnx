@@ -1,8 +1,15 @@
 package config
 
 import (
-	"github.com/spf13/viper"
+	"log"
+
+	"github.com/knadh/koanf"
+	"github.com/knadh/koanf/parsers/json"
+	"github.com/knadh/koanf/providers/confmap"
+	"github.com/knadh/koanf/providers/file"
 )
+
+var k = koanf.New(".")
 
 // Server is the configuration object for anything server-related
 type Server struct {
@@ -21,39 +28,34 @@ type Config struct {
 	RedisURI        string
 }
 
-var configuration *Config
+var configuration Config
 
 // Load configuration from file
 func Load() error {
-	c := new(Config)
+	// Set some default values
+	k.Load(confmap.Provider(map[string]interface{}{
+		"Server.Port":             3000,
+		"Server.Host":             "0.0.0.0",
+		"Server.CompressionLevel": -1,
+		"Server.EnableCSP":        true,
+		"LinkLength":              8,
+		"AllowCustomURLs":         false,
+		"RedisURI":                "redis://localhost:6379/0",
+	}, "."), nil)
 
-	viper.SetConfigName("config")
-	viper.SetConfigType("json")
-	viper.AddConfigPath(".")
+	f := file.Provider("./config.json")
 
-	viper.SetDefault("Server.Port", 3000)
-	viper.SetDefault("Server.Host", "0.0.0.0")
-	viper.SetDefault("Server.CompressionLevel", 1)
-	viper.SetDefault("Server.EnableCSP", true)
-	viper.SetDefault("LinkLength", 8)
-	viper.SetDefault("AllowCustomURLs", false)
-
-	err := viper.ReadInConfig()
-	if err != nil {
-		return err
+	// Load configuration from JSON on top of said default values
+	if err := k.Load(f, json.Parser()); err != nil {
+		log.Fatalf("error loading config: %v", err)
 	}
 
-	err = viper.Unmarshal(&c)
-	if err != nil {
-		return err
-	}
-
-	configuration = c
+	k.Unmarshal("", &configuration)
 
 	return nil
 }
 
 // GetConfig returns the entire configuration object
 func GetConfig() Config {
-	return *configuration
+	return configuration
 }
