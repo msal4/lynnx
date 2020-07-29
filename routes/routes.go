@@ -31,8 +31,32 @@ func Register(app *fiber.App) {
 		})
 	})
 
+	// This route doesn't redirect, that should be done on the client.
 	api.Get("/:short", func(c *fiber.Ctx) {
-		c.SendStatus(501)
+		if c.Params("short") != "" {
+			value, err := database.Read(c.Params("short"))
+
+			if err != nil {
+				c.Status(500).JSON(&fiber.Map{
+					"success": false,
+					"error":   err.Error(),
+				})
+
+				return
+			}
+
+			c.Status(200).JSON(&fiber.Map{
+				"success": true,
+				"long":    value,
+			})
+		} else {
+			c.Status(400).JSON(&fiber.Map{
+				"success": false,
+				"error":   "\"short\" parameter is missing or empty.",
+			})
+
+			return
+		}
 	})
 
 	api.Post("/", func(c *fiber.Ctx) {
@@ -55,6 +79,8 @@ func Register(app *fiber.App) {
 					"success": false,
 					"error":   err.Error(),
 				})
+
+				return
 			}
 
 			c.Status(201).JSON(&fiber.Map{
@@ -66,6 +92,8 @@ func Register(app *fiber.App) {
 				"success": false,
 				"error":   "\"long\" content field missing or empty.",
 			})
+
+			return
 		}
 	})
 }
