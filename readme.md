@@ -1,21 +1,16 @@
-# Lynnx
+# 🐆 Lynnx
 
-> 🐆 **Lynnx is a powerful, accessible and lightweight URL shortener built with SvelteJS and Golang and backed by a Redis database.**
->\
->\
-> **[Contributing Guide](contributing.md) | [Website](lynnx.me) | [Frontend Repo](https://github.com/lukewhrit/lynnx-frontend)**
+> **Lynnx is a powerful, accessible and lightweight URL shortener built with Svelte (Sapper), and Golang that's backed by a Redis database.**
 
-* Designed for accessability
-* Lightweight and Fast
-* Available all over the world
+* Simple; but powerful
+* Lightweight and fast
+* Designed for accessibility
 
 ## Setup
 
-Setting up the Lynnx backend for local development is easy, it just requires [Git](http://git-scm.org/), [Golang](http://golang.org/) and [Mage](https://magefile.org/).
+Setting up the Lynnx server for local development is easy, it just requires [Git](http://git-scm.org/), [Golang](http://golang.org/), and [Mage](https://magefile.org/).
 
-This project makes use of Golang Modules for dependency management, make sure they're enabled.
-
-```sh
+```command
 # Clone repository:
 $ git clone git@github.com:lukewhrit/lynnx
 $ cd lynnx
@@ -24,7 +19,47 @@ $ cd lynnx
 $ mage build
 ```
 
-## Contributors
+## API
+
+### `GET /v1/:short`
+
+* **Response:**
+
+  ```json
+  {
+  	"long": "https://github.com/",
+      "success": true
+  }
+  ```
+
+* **URL Parameters:**
+
+  ```json
+  {
+  	"short": ""
+  }
+  ```
+
+### `POST /v1/`
+
+* **Request:**
+
+  ```json
+  {
+  	"long": "https://github.com/"
+  }
+  ```
+
+* **Response:**
+
+  ```json
+  {
+  	"short": "On2f2e3v",
+  	"success": true
+  }
+  ```
+
+# Contributors
 
 * [Luke Whrit <me@lukewhrit.xyz>](https://github.com/lukewhrit) — Creator and Maintainer.
 
