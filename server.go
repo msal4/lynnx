@@ -10,8 +10,9 @@ import (
 
 	"github.com/lukewhrit/lynnx/config"
 	"github.com/lukewhrit/lynnx/database"
-	"github.com/lukewhrit/lynnx/middlewares"
 	"github.com/lukewhrit/lynnx/routes"
+
+	"github.com/lukewhrit/middlewares"
 )
 
 func main() {
@@ -42,6 +43,14 @@ func registerMiddleware(app *fiber.App) {
 	}))
 
 	app.Use(cors.New())
-	app.Use(middlewares.SecurityHeaders())
 	app.Use(middleware.Logger())
+	app.Use(middlewares.SecurityHeaders(false))
+
+	app.Use(func(c *fiber.Ctx) {
+		if config.GetConfig().Server.EnableCSP == true {
+			c.Set("Content-Security-Policy", "default-src 'self' https:; frame-ancestors 'none'; base-uri 'none'; form-action 'none';")
+		}
+
+		c.Next()
+	})
 }
