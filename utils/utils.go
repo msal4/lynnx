@@ -2,6 +2,7 @@ package utils
 
 import (
 	"math/rand"
+	"net/url"
 	"time"
 )
 
@@ -18,4 +19,10 @@ func RandomString(n int) string {
 	}
 
 	return string(b)
+}
+
+// IsURL takes the provided string ("str") and checks if it is a URL
+func IsURL(str string) bool {
+	u, err := url.Parse(str)
+	return err == nil && u.Scheme != "" && u.Host != ""
 }

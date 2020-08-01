@@ -3,11 +3,11 @@ package routes
 import (
 	"github.com/gofiber/fiber"
 	"github.com/lukewhrit/lynnx/database"
+	"github.com/lukewhrit/lynnx/utils"
 )
 
 type createInput struct {
-	Long string `json:"long" xml:"long" form:"long" query:"long"`
-	// Redirect bool   `query:"redirect"`
+	Long string `json:"long" form:"long"`
 }
 
 // Register contains all endpoints for the app
@@ -73,21 +73,30 @@ func Register(app *fiber.App) {
 		}
 
 		if body.Long != "" {
-			key, err := database.Create(body.Long)
+			if utils.IsURL(body.Long) == true {
+				key, err := database.Create(body.Long)
 
-			if err != nil {
-				c.Status(500).JSON(&fiber.Map{
+				if err != nil {
+					c.Status(500).JSON(&fiber.Map{
+						"success": false,
+						"error":   err.Error(),
+					})
+
+					return
+				}
+
+				c.Status(201).JSON(&fiber.Map{
+					"success": true,
+					"short":   key,
+				})
+			} else {
+				c.Status(400).JSON(&fiber.Map{
 					"success": false,
-					"error":   err.Error(),
+					"error":   "value of \"long\" is not a valid URL.",
 				})
 
 				return
 			}
-
-			c.Status(201).JSON(&fiber.Map{
-				"success": true,
-				"short":   key,
-			})
 		} else {
 			c.Status(400).JSON(&fiber.Map{
 				"success": false,
