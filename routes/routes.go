@@ -7,11 +7,12 @@ import (
 
 type createInput struct {
 	Long string `json:"long" xml:"long" form:"long" query:"long"`
+	// Redirect bool   `query:"redirect"`
 }
 
 // Register contains all endpoints for the app
 func Register(app *fiber.App) {
-	api := app.Group("/v1")
+	api := app.Group("/api/v1")
 
 	/*
 	 * API "Schema"

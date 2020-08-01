@@ -1,0 +1,37 @@
+@font-face {
+	font-family: 'Roboto';
+	src:
+		url('../fonts/roboto.woff2') format('woff2')
+		url('../fonts/roboto.ttf') format('ttf');
+  font-display: swap;
+}
+
+.container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.content {
+	flex: 0 0 100%;
+	max-width: 375px;
+}
+
+.field {
+	width: 100% !important;
+}
+
+.shorten-input {
+	border-bottom-right-radius: 0 !important;
+	border-right: 0;
+	border-top-right-radius: 0 !important;
+	margin: 0;
+}
+
+.shorten-button {
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+	margin: 0;
+	line-height: unset;
+}

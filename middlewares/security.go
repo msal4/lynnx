@@ -19,7 +19,7 @@ func SecurityHeaders() func(*fiber.Ctx) {
 		c.Set("Cache-Control", "max-age=31536000")
 
 		if config.GetConfig().Server.EnableCSP == true {
-			c.Set("Content-Security-Policy", "default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none';")
+			c.Set("Content-Security-Policy", "default-src 'self' https:; frame-ancestors 'none'; base-uri 'none'; form-action 'none';")
 		}
 
 		// Go to next middleware:

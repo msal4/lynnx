@@ -7,6 +7,7 @@ import (
 	"github.com/gofiber/cors"
 	"github.com/gofiber/fiber"
 	"github.com/gofiber/fiber/middleware"
+
 	"github.com/lukewhrit/lynnx/config"
 	"github.com/lukewhrit/lynnx/database"
 	"github.com/lukewhrit/lynnx/middlewares"
@@ -25,6 +26,7 @@ func main() {
 	// Register middleware and endpoints
 	registerMiddleware(app)
 	routes.Register(app)
+	app.Static("/", "./static")
 
 	database.Load()
 
