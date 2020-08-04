@@ -1,11 +1,11 @@
 {
-	"Server": {
-		"Port": 9000,
-		"Host": "127.0.0.1",
-		"CompressionLevel": -1,
-		"EnableCSP": true
+	"server": {
+		"port": 9000,
+		"host": "127.0.0.1",
+		"compression_level": -1,
+		"enable_csp": true
 	},
-	"LinkLength": 8,
-	"AllowCustomURLs": false,
-	"RedisURI": "redis://localhost:6379/0"
+	"link_length": 8,
+	"allow_custom_urls": false,
+	"redis_uri": "redis://localhost:6379/0"
 }
