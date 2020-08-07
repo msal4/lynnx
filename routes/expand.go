@@ -8,8 +8,8 @@ import (
 	"github.com/lukewhrit/lynnx/database"
 )
 
-// RegisterUnshorten contains an endpoint that allows for the long version of a url to be retrieved
-func RegisterUnshorten(api fiber.Router) {
+// RegisterExpand contains an endpoint that allows for the long version of a url to be retrieved
+func RegisterExpand(api fiber.Router) {
 	api.Get("/:short", func(c *fiber.Ctx) {
 		// Make sure `short` is not empty and is of correct length.
 		if c.Params("short") != "" && len(c.Params("short")) == config.GetConfig().LinkLength {
