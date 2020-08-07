@@ -1,24 +1,16 @@
 package routes
 
 import (
-	"github.com/gofiber/fiber"
-	"github.com/lukewhrit/lynnx/database"
-	"github.com/lukewhrit/lynnx/utils"
-)
+	"fmt"
 
-type createInput struct {
-	Long string `json:"long" form:"long"`
-}
+	"github.com/gofiber/fiber"
+	"github.com/lukewhrit/lynnx/config"
+	"github.com/lukewhrit/lynnx/database"
+)
 
 // Register contains all endpoints for the app
 func Register(app *fiber.App) {
 	api := app.Group("/api/v1")
-
-	/*
-	 * API "Schema"
-	 * - GET /v1/:short
-	 * - POST /v1/
-	 */
 
 	api.Get("/", func(c *fiber.Ctx) {
 		// Just send back some information about the API
@@ -32,9 +24,9 @@ func Register(app *fiber.App) {
 		})
 	})
 
-	// This route doesn't redirect, that should be done on the client.
 	api.Get("/:short", func(c *fiber.Ctx) {
-		if c.Params("short") != "" {
+		// Make sure `short` is not empty and is of correct length.
+		if c.Params("short") != "" && len(c.Params("short")) == config.GetConfig().LinkLength {
 			value, err := database.Read(c.Params("short"))
 
 			if err != nil {
@@ -53,7 +45,7 @@ func Register(app *fiber.App) {
 		} else {
 			c.Status(400).JSON(&fiber.Map{
 				"success": false,
-				"error":   "\"short\" parameter is missing or empty.",
+				"error":   fmt.Sprintf("\"short\" parameter is missing, empty or of the wrong length (%d).", config.GetConfig().LinkLength),
 			})
 
 			return
@@ -72,38 +64,29 @@ func Register(app *fiber.App) {
 			return
 		}
 
-		if body.Long != "" {
-			if utils.IsURL(body.Long) == true {
-				key, err := database.Create(body.Long)
-
-				if err != nil {
-					c.Status(500).JSON(&fiber.Map{
-						"success": false,
-						"error":   err.Error(),
-					})
-
-					return
-				}
-
-				c.Status(201).JSON(&fiber.Map{
-					"success": true,
-					"short":   key,
-				})
-			} else {
-				c.Status(400).JSON(&fiber.Map{
-					"success": false,
-					"error":   "value of \"long\" is not a valid URL.",
-				})
-
-				return
-			}
-		} else {
+		if err := body.validate(); err != nil {
 			c.Status(400).JSON(&fiber.Map{
 				"success": false,
-				"error":   "\"long\" content field missing or empty.",
+				"error":   err.Error(),
 			})
 
 			return
 		}
+
+		key, err := database.Create(body.Long)
+
+		if err != nil {
+			c.Status(500).JSON(&fiber.Map{
+				"success": false,
+				"error":   err.Error(),
+			})
+
+			return
+		}
+
+		c.Status(201).JSON(&fiber.Map{
+			"success": true,
+			"short":   key,
+		})
 	})
 }
