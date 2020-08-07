@@ -7,7 +7,7 @@ import (
 
 // NewLink inserts into the database
 func NewLink(value string) (string, error) {
-	key := utils.RandomString(config.GetConfig().LinkLength)
+	key := utils.RandomString(config.Configuration.LinkLength)
 	err := RedisClient.Set(Ctx, key, value, 0).Err()
 
 	return key, err

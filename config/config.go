@@ -30,7 +30,8 @@ type Config struct {
 	RedisURI        string `koanf:"redis_uri"`
 }
 
-var configuration Config
+// Configuration is the loaded config object
+var Configuration Config
 
 // Load configuration from file
 func Load() error {
@@ -61,12 +62,7 @@ func Load() error {
 		log.Fatalf("error loading config from env: %v", err)
 	}
 
-	k.Unmarshal("", &configuration)
+	k.Unmarshal("", &Configuration)
 
 	return nil
-}
-
-// GetConfig returns the entire configuration object
-func GetConfig() Config {
-	return configuration
 }

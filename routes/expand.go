@@ -12,7 +12,7 @@ import (
 func RegisterExpand(api fiber.Router) {
 	api.Get("/:short", func(c *fiber.Ctx) {
 		// Make sure `short` is not empty and is of correct length.
-		if c.Params("short") != "" && len(c.Params("short")) == config.GetConfig().LinkLength {
+		if c.Params("short") != "" && len(c.Params("short")) == config.Configuration.LinkLength {
 			value, err := database.GetLink(c.Params("short"))
 
 			if err != nil {
@@ -31,7 +31,7 @@ func RegisterExpand(api fiber.Router) {
 		} else {
 			c.Status(400).JSON(&fiber.Map{
 				"success": false,
-				"error":   fmt.Sprintf("\"short\" parameter is missing, empty or of the wrong length (%d).", config.GetConfig().LinkLength),
+				"error":   fmt.Sprintf("\"short\" parameter is missing, empty or of the wrong length (%d).", config.Configuration.LinkLength),
 			})
 
 			return

@@ -30,14 +30,14 @@ func main() {
 	database.Load()
 
 	// Start the server
-	address := fmt.Sprintf("%s:%d", config.GetConfig().Server.Host, config.GetConfig().Server.Port)
+	address := fmt.Sprintf("%s:%d", config.Configuration.Server.Host, config.Configuration.Server.Port)
 
 	log.Fatal(app.Listen(address))
 }
 
 func registerMiddleware(app *fiber.App) {
 	app.Use(middleware.Compress(middleware.CompressConfig{
-		Level: config.GetConfig().CompressionLevel,
+		Level: config.Configuration.CompressionLevel,
 	}))
 
 	app.Use(cors.New())
@@ -53,7 +53,7 @@ func registerMiddleware(app *fiber.App) {
 		c.Set("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload")
 		// c.Set("Cache-Control", "max-age=31536000")
 
-		if config.GetConfig().Server.EnableCSP == true {
+		if config.Configuration.Server.EnableCSP == true {
 			c.Set("Content-Security-Policy", "default-src 'self' https:; frame-ancestors 'none'; base-uri 'none'; form-action 'none';")
 		}
 

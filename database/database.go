@@ -18,7 +18,7 @@ var (
 
 // Load creates a connection to the database
 func Load() {
-	opts, err := redis.ParseURL(config.GetConfig().RedisURI)
+	opts, err := redis.ParseURL(config.Configuration.RedisURI)
 
 	if err != nil {
 		log.Fatalf("Couldn't parse Redis URI: %s", err)
