@@ -1,14 +1,18 @@
 package routes
 
 import (
+	"fmt"
+
 	"github.com/gofiber/fiber"
+	"github.com/lukewhrit/lynnx/config"
 	"github.com/lukewhrit/lynnx/database"
 )
 
 // RegisterUnshorten contains an endpoint that allows for the long version of a url to be retrieved
 func RegisterUnshorten(api fiber.Router) {
 	api.Get("/:short", func(c *fiber.Ctx) {
-		if c.Params("short") != "" {
+		// Make sure `short` is not empty and is of correct length.
+		if c.Params("short") != "" && len(c.Params("short")) == config.GetConfig().LinkLength {
 			value, err := database.GetLink(c.Params("short"))
 
 			if err != nil {
@@ -27,7 +31,7 @@ func RegisterUnshorten(api fiber.Router) {
 		} else {
 			c.Status(400).JSON(&fiber.Map{
 				"success": false,
-				"error":   "\"short\" parameter is missing or empty.",
+				"error":   fmt.Sprintf("\"short\" parameter is missing, empty or of the wrong length (%d).", config.GetConfig().LinkLength),
 			})
 
 			return
