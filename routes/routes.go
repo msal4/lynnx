@@ -6,13 +6,13 @@ import (
 
 // Register contains all endpoints for the app
 func Register(app *fiber.App) {
-	api := app.Group("/api/v1")
+	api := app.Group("/api")
 
 	// Register routes
 	RegisterShorten(api)
 	RegisterExpand(api)
 
-	api.Get("/api", func(c *fiber.Ctx) {
+	api.Get("/", func(c *fiber.Ctx) {
 		// Just send back some information about the API
 		c.JSON(&fiber.Map{
 			"name":              "lynnx",
