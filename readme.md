@@ -1,8 +1,8 @@
-# 🐆 Lynnx
+# 🐯 Lynnx
 
-> **Lynnx is a powerful, accessible and lightweight URL shortener built with Svelte (Sapper), and Golang that's backed by a Redis database.**
+> **Lynnx is a powerful, accessible and lightweight URL shortener built with HTML/CSS, and Golang that's backed by a Redis database.**
 
-* Simple; but powerful
+* Simple, but powerful
 * Lightweight and fast
 * Designed for accessibility
 
@@ -28,7 +28,7 @@ $ mage build
   ```json
   {
   	"long": "https://github.com/",
-      "success": true
+    "success": true
   }
   ```
 

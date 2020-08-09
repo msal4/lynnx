@@ -54,7 +54,7 @@ func registerMiddleware(app *fiber.App) {
 		// c.Set("Cache-Control", "max-age=31536000")
 
 		if config.Configuration.Server.EnableCSP == true {
-			c.Set("Content-Security-Policy", "default-src 'self' https:; frame-ancestors 'none'; base-uri 'none'; form-action 'none';")
+			c.Set("Content-Security-Policy", "default-src 'self' https:; frame-ancestors 'none'; base-uri 'none'; form-action 'self';")
 		}
 
 		c.Next()

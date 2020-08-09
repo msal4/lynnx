@@ -11,5 +11,6 @@ end_of_line = lf
 [*.md]
 trim_trailing_whitespace = false
 
-[*.css]
+[*.{css,js}]
 indent_size = 2
+indent_style = space

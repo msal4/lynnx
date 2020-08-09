@@ -22,14 +22,14 @@
 	width: 100% !important;
 }
 
-.shorten-input {
+#shorten-input {
 	border-bottom-right-radius: 0 !important;
 	border-right: 0;
 	border-top-right-radius: 0 !important;
 	margin: 0;
 }
 
-.shorten-button {
+#shorten-button {
 	border-bottom-left-radius: 0;
 	border-top-left-radius: 0;
 	margin: 0;
