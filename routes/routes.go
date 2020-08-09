@@ -19,7 +19,7 @@ func Register(app *fiber.App) {
 			"description":       "a powerful, accessible, fast and lightweight URL shortener.",
 			"version":           "0.1.0",
 			"project_url":       "https://github.com/lukewhrit/lynnx/",
-			"documentation_url": "https://github.com/lukewhrit/lynnx/blob/master/spec.yml",
+			"documentation_url": "https://github.com/lukewhrit/lynnx/blob/main/spec.yml",
 			"author":            "Luke Whrit <lukewhrit@gmail.com> (https://lukewhrit.xyz)",
 		})
 	})
