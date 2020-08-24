@@ -51,10 +51,9 @@ func registerMiddleware(app *fiber.App) {
 		c.Set("X-Content-Type-Options", "nosniff")
 		c.Set("Referrer-Policy", "no-referrer-when-downgrade")
 		c.Set("Strict-Transport-Security", "max-age=31536000; includeSubDomains; preload")
-		// c.Set("Cache-Control", "max-age=31536000")
 
 		if config.Configuration.Server.EnableCSP == true {
-			c.Set("Content-Security-Policy", "default-src 'self' https:; frame-ancestors 'none'; base-uri 'none'; form-action 'self'; img-src data:;")
+			c.Set("Content-Security-Policy", "default-src 'self' https:; frame-ancestors 'none'; base-uri 'none'; form-action 'self' https:; img-src data:;")
 		}
 
 		c.Next()

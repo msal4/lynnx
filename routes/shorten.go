@@ -1,46 +1,16 @@
 package routes
 
 import (
-	validation "github.com/go-ozzo/ozzo-validation"
-	"github.com/go-ozzo/ozzo-validation/is"
+	"fmt"
+
 	"github.com/gofiber/fiber"
 	"github.com/lukewhrit/lynnx/database"
+	"github.com/lukewhrit/lynnx/utils"
 )
 
-type createInput struct {
-	Long string `json:"long" form:"long"`
-}
-
-func (c createInput) validate() error {
-	return validation.ValidateStruct(&c,
-		validation.Field(&c.Long, validation.Required, is.URL),
-	)
-}
-
-// RegisterShorten contains an endpoint that allows for links to be shortened
-func RegisterShorten(api fiber.Router) {
-	api.Post("/", func(c *fiber.Ctx) {
-		body := new(createInput)
-
-		if err := c.BodyParser(body); err != nil {
-			c.Status(400).JSON(&fiber.Map{
-				"success": false,
-				"error":   err.Error(),
-			})
-
-			return
-		}
-
-		if err := body.validate(); err != nil {
-			c.Status(400).JSON(&fiber.Map{
-				"success": false,
-				"error":   err.Error(),
-			})
-
-			return
-		}
-
-		key, err := database.NewLink(body.Long)
+func shorten(c *fiber.Ctx) {
+	if c.FormValue("long") != "" && utils.IsURL(c.FormValue("long")) {
+		key, err := database.NewLink(c.FormValue("long"))
 
 		if err != nil {
 			c.Status(500).JSON(&fiber.Map{
@@ -52,8 +22,13 @@ func RegisterShorten(api fiber.Router) {
 		}
 
 		c.Status(201).JSON(&fiber.Map{
-			"success": true,
-			"short":   key,
+			"success": false,
+			"long":    key,
 		})
-	})
+	} else {
+		c.Status(400).JSON(&fiber.Map{
+			"success": false,
+			"error":   fmt.Sprintf("\"long\" parameter is missing, empty, or not a valid URL"),
+		})
+	}
 }

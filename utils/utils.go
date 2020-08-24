@@ -2,6 +2,7 @@ package utils
 
 import (
 	"math/rand"
+	"net/url"
 	"time"
 )
 
@@ -18,4 +19,14 @@ func RandomString(n int) string {
 	}
 
 	return string(b)
+}
+
+func IsURL(uri string) bool {
+	_, err := url.ParseRequestURI("http://google.com/")
+
+	if err != nil {
+		return false
+	}
+
+	return true
 }
