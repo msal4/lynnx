@@ -13,17 +13,14 @@ import (
 
 var k = koanf.New(".")
 
-// Server is the configuration object for anything server-related
-type Server struct {
-	Port             int    `koanf:"port"`
-	Host             string `koanf:"host"`
-	CompressionLevel int    `koanf:"compression_level"`
-	EnableCSP        bool   `koanf:"enable_csp"`
-}
-
 // Config is the configuration object
 type Config struct {
-	Server `koanf:"server"`
+	Server struct {
+		Port             int    `koanf:"port"`
+		Host             string `koanf:"host"`
+		CompressionLevel int    `koanf:"compression_level"`
+		EnableCSP        bool   `koanf:"enable_csp"`
+	} `koanf:"server"`
 
 	LinkLength      int    `koanf:"link_length"`
 	AllowCustomURLs bool   `koanf:"allow_custom_urls"`

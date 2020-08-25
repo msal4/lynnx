@@ -37,7 +37,7 @@ func main() {
 
 func registerMiddleware(app *fiber.App) {
 	app.Use(middleware.Compress(middleware.CompressConfig{
-		Level: config.Configuration.CompressionLevel,
+		Level: config.Configuration.Server.CompressionLevel,
 	}))
 
 	app.Use(cors.New())
