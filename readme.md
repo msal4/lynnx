@@ -1,6 +1,6 @@
 # 🐯 Lynnx
 
-> **Lynnx is a powerful, accessible and lightweight URL shortener built with HTML/CSS, and Golang that's backed by a Redis database.**
+**Lynnx is a powerful, accessible and lightweight URL shortener built with HTML/CSS, and Golang that's backed by a Redis database.**
 
 * Simple, but powerful
 * Lightweight and fast
@@ -25,39 +25,34 @@ $ mage build
 
 * **Response:**
 
-  ```json
-  {
-  	"long": "https://github.com/",
-    "success": true
-  }
-  ```
+	```json
+	{
+		"long": "https://github.com/",
+		"success": true
+  	}
+  	```
 
 * **URL Parameters:**
-
-  ```json
-  {
-  	"short": ""
-  }
-  ```
+	* **`short` (String)**
 
 ### `POST /v1/`
 
 * **Request:**
 
-  ```json
-  {
-  	"long": "https://github.com/"
-  }
-  ```
+	```json
+	{
+		"long": "https://github.com/"
+	}
+	```
 
 * **Response:**
 
-  ```json
-  {
-  	"short": "On2f2e3v",
-  	"success": true
-  }
-  ```
+	```json
+	{
+		"short": "On2f2e3v",
+		"success": true
+	}
+	```
 
 # Contributors
 
