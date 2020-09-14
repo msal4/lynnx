@@ -32,6 +32,8 @@ github.com/go-redis/redis/v8 v8.0.0-beta.10 h1:ZQDRAQAsK+rZQydcdMnWMlm9FkGwRTEDr
 github.com/go-redis/redis/v8 v8.0.0-beta.10/go.mod h1:CJP1ZIHwhosNYwIdaHPZK9vHsM3+roNBaZ7U9Of1DXc=
 github.com/go-redis/redis/v8 v8.0.0-beta.11 h1:2016iniYxUB1OIEnALb0XRsNy4elCTW8lFBsSX7Sd/A=
 github.com/go-redis/redis/v8 v8.0.0-beta.11/go.mod h1:isLoQT/NFSP7V67lyvM9GmdvLdyZ7pEhsXvvyQtnQTo=
+github.com/go-redis/redis/v8 v8.0.0 h1:PC0VsF9sFFd2sko5bu30aEFc8F1TKl6n65o0b8FnCIE=
+github.com/go-redis/redis/v8 v8.0.0/go.mod h1:isLoQT/NFSP7V67lyvM9GmdvLdyZ7pEhsXvvyQtnQTo=
 github.com/gofiber/cors v0.2.2 h1:NQgLeNq8SWCKsdGotodyFCqLdSnxGLISsp9OU01k/cs=
 github.com/gofiber/cors v0.2.2/go.mod h1:lAXoymRHZKASLfydSAtsRGVrukWi3KefFnfxmCEAH5o=
 github.com/gofiber/fiber v1.13.3 h1:14kBTW1+n5mNIJZqibsbIdb+yQdC5argcbe9vE7Nz+o=
