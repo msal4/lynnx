@@ -6,6 +6,6 @@ require (
 	github.com/go-redis/redis/v8 v8.1.3
 	github.com/gofiber/cors v0.2.2
 	github.com/gofiber/fiber v1.14.6
-	github.com/knadh/koanf v0.12.1
+	github.com/knadh/koanf v0.13.0
 	github.com/magefile/mage v1.10.0
 )
