@@ -92,6 +92,7 @@ github.com/knadh/koanf v0.12.1 h1:9N0asqPUvZ0jL9thTbMZ0FAT3VrGfR+aYm5JTInT+Gs=
 github.com/knadh/koanf v0.12.1/go.mod h1:31bzRSM7vS5Vm9LNLo7B2Re1zhLOZT6EQKeodixBikE=
 github.com/knadh/koanf v0.13.0 h1:OEjNdmrP/5oAhJkNwTtarioqOC4xe6WxRK8Q5ffW8WU=
 github.com/knadh/koanf v0.13.0/go.mod h1:7XDF7OJIqSQLUZnaXkjb1HB3CgMEYHyrzmgT8A6xAaE=
+github.com/knadh/koanf v0.14.0/go.mod h1:H5mEFsTeWizwFXHKtsITL5ipsLTuAMQoGuQpp+1JL9U=
 github.com/kr/pretty v0.1.0 h1:L/CwN0zerZDmRFUapSPitk6f+Q3+0za1rQkzVuMiMFI=
 github.com/kr/pretty v0.1.0/go.mod h1:dAy3ld7l9f0ibDNOQOHHMYYIIbhfbHSm3C4ZsoJORNo=
 github.com/kr/pty v1.1.1/go.mod h1:pFQYn66WHrOpPYNljwOMqo10TkYh1fy3cYio2l3bCsQ=
