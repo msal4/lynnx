@@ -22,7 +22,7 @@ func RandomString(n int) string {
 }
 
 func IsURL(uri string) bool {
-	_, err := url.ParseRequestURI("http://google.com/")
+	_, err := url.ParseRequestURI(uri)
 
 	if err != nil {
 		return false
